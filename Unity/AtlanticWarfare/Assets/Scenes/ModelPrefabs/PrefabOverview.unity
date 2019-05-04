@@ -845,6 +845,37 @@ Transform:
   m_Father: {fileID: 1803385371}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &511876826
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 511876827}
+  m_Layer: 0
+  m_Name: piranha_001
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &511876827
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 511876826}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 8, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 816460252}
+  m_Father: {fileID: 1803385371}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &556011671 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3581718012463466135, guid: d32c66e82836a56469b5dd7a54f81cae,
@@ -1093,6 +1124,12 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &816460252 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 9016747832731492526, guid: 6a859e350da3c1446b3f345e09bcd8d7,
+    type: 3}
+  m_PrefabInstance: {fileID: 9016747833542431090}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &829266088
 GameObject:
   m_ObjectHideFlags: 0
@@ -2178,6 +2215,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 509240786}
+  - {fileID: 511876827}
   m_Father: {fileID: 1199003215}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -5784,3 +5822,72 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5996e7a0e2b2f7f44a1ede8a17747817, type: 3}
+--- !u!1001 &9016747833542431090
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 511876827}
+    m_Modifications:
+    - target: {fileID: 9016747832731492521, guid: 6a859e350da3c1446b3f345e09bcd8d7,
+        type: 3}
+      propertyPath: m_Name
+      value: piranha_001
+      objectReference: {fileID: 0}
+    - target: {fileID: 9016747832731492526, guid: 6a859e350da3c1446b3f345e09bcd8d7,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9016747832731492526, guid: 6a859e350da3c1446b3f345e09bcd8d7,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9016747832731492526, guid: 6a859e350da3c1446b3f345e09bcd8d7,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9016747832731492526, guid: 6a859e350da3c1446b3f345e09bcd8d7,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9016747832731492526, guid: 6a859e350da3c1446b3f345e09bcd8d7,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9016747832731492526, guid: 6a859e350da3c1446b3f345e09bcd8d7,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9016747832731492526, guid: 6a859e350da3c1446b3f345e09bcd8d7,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9016747832731492526, guid: 6a859e350da3c1446b3f345e09bcd8d7,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9016747832731492526, guid: 6a859e350da3c1446b3f345e09bcd8d7,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9016747832731492526, guid: 6a859e350da3c1446b3f345e09bcd8d7,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9016747832731492526, guid: 6a859e350da3c1446b3f345e09bcd8d7,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 6a859e350da3c1446b3f345e09bcd8d7, type: 3}
