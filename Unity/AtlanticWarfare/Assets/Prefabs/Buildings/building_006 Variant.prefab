@@ -10,7 +10,7 @@ PrefabInstance:
     - target: {fileID: -927199367670048503, guid: 28e86ddf0ea11cb40b05d04fa357d275,
         type: 3}
       propertyPath: m_Name
-      value: building_006
+      value: building_006 Variant
       objectReference: {fileID: 0}
     - target: {fileID: -927199367670048503, guid: 28e86ddf0ea11cb40b05d04fa357d275,
         type: 3}
@@ -18,6 +18,11 @@ PrefabInstance:
       value: 
       objectReference: {fileID: -964228994112308473, guid: 0000000000000000d000000000000000,
         type: 0}
+    - target: {fileID: -927199367670048503, guid: 28e86ddf0ea11cb40b05d04fa357d275,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: 28e86ddf0ea11cb40b05d04fa357d275,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -72,6 +77,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -4216859302048453862, guid: 28e86ddf0ea11cb40b05d04fa357d275,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 28e86ddf0ea11cb40b05d04fa357d275, type: 3}
