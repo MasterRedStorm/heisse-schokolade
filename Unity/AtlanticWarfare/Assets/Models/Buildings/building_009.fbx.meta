@@ -7,8 +7,33 @@ ModelImporter:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
+      name: Accessories
+    second: {fileID: 2100000, guid: 186b39fd65edec7468eceda76c324b15, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Base
+    second: {fileID: 2100000, guid: cd1a5a42acd90914b8a05c5977f7583e, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Layer1
+    second: {fileID: 2100000, guid: 464d80c3dea3a7d41b15324f2f3a7440, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Layer2
+    second: {fileID: 2100000, guid: 1cf3bdea88cf60d4584119b366c78c2b, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
       name: Material
     second: {fileID: 2100000, guid: b17b3b30f85f80943a8d073904ab4de2, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Window
+    second: {fileID: 2100000, guid: 76c8d0f26a0c2694f839b621936f4fed, type: 2}
   materials:
     importMaterials: 1
     materialName: 0

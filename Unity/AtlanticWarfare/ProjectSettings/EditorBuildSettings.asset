@@ -12,6 +12,6 @@ EditorBuildSettings:
     path: Assets/Scenes/Menu/MainMenu.unity
     guid: 04faae5a501096a4483c30f6f8341555
   - enabled: 1
-    path: Assets/Scenes/ModelPrefabs/PrefabOverview.unity
-    guid: 220bbe63e0e5c0647af52540f674c66a
+    path: Assets/Scenes/Spiel.unity
+    guid: 1f2308ff4eb34b74b93314f978940460
   m_configObjects: {}
