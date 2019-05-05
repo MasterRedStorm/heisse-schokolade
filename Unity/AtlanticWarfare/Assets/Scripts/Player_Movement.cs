@@ -3,15 +3,18 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class Movement : MonoBehaviour
+public class Player_Movement : MonoBehaviour
 {
     [SerializeField] private KeyCode[] WASD_Controls = new KeyCode[4];
     public Vector3 MovingDir = Vector3.zero;
     [SerializeField] private Transform PlayerObject;
     [SerializeField, Range(0, 1)] private float Smoothness = 0.9f;
     private NavMeshAgent PlayerAgent = null;
-    [SerializeField] string TerrainTag = "Walkable";
+    [SerializeField] string TerrainTag = "Player";
+    [SerializeField] string MoveableTag = "Walkable";
     [SerializeField, Range(0,1)] private float Speed = 0.5f;
+    public bool MoveIsPossible = false;
+    
 
     public void Start()
     {
@@ -38,13 +41,20 @@ public class Movement : MonoBehaviour
             NavMeshHit NavHit = new NavMeshHit();
             if (Hit.collider.tag == TerrainTag && NavMesh.SamplePosition(Hit.point, out NavHit, 1, NavMesh.AllAreas))
             {
-                PlayerAgent.nextPosition = NavHit.position;
+                if (MoveIsPossible) PlayerAgent.nextPosition = NavHit.position;
                 Debug.DrawRay(NavHit.position, Vector3.up , Color.red, 30);
                 break;
             }
         }
 
-        //if (MoveIsPossible) PlayerObject.transform.position += MovingDir;
         if (MovingDir.magnitude == 1)PlayerObject.rotation = Quaternion.LookRotation(MovingDir, Vector3.up);
     }
+
+    public void OnTriggerStay(Collider other)
+    {
+        if (other.tag == MoveableTag) MoveIsPossible = true;
+        Debug.Log("Trigger Stay");
+    }
+    public void OnTriggerExit(Collider other){ if (other.tag == MoveableTag) MoveIsPossible = false; }
+
 }

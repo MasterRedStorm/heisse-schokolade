@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Player_Cam : MonoBehaviour
+public class Player_Camera : MonoBehaviour
 {
     [SerializeField] private Transform Target = null;
     [SerializeField] private Vector3 Offset = new Vector3(0, 20, 20);
@@ -15,6 +15,6 @@ public class Player_Cam : MonoBehaviour
     {
         if (Target == null) return;
         transform.position = Target.position + Offset;
-        transform.rotation = Quaternion.LookRotation(-Offset, Vector3.up);
+        transform.rotation = Quaternion.LookRotation(Target.position - transform.position, Vector3.up);
     }
 }
