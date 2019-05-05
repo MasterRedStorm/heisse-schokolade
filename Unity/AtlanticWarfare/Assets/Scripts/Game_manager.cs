@@ -167,7 +167,7 @@ public class Game_manager : MonoBehaviour
     {
         while (true)
         {
-            if (Kapital > 10) IncreaseKapital(Cities.Count * (Kapital / 10));
+            if (Kapital > 10) IncreaseKapital((1 + Cities.Count / 10) * (Kapital / 10));
             else IncreaseKapital(1);
             SetKapitalText();
             yield return new WaitForSeconds(1);
