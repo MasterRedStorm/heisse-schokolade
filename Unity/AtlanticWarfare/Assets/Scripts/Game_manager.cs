@@ -13,8 +13,8 @@ public class Game_manager : MonoBehaviour
     [SerializeField] GameObject Cityprefab1 = null;
     [SerializeField] GameObject Playerprefab = null;
     private static List<Stadt> Cities = new List<Stadt>();
-    private static int Kapital = 10;
-    private static int MaxKapital = 20;
+    public static int Kapital = 1;
+    private static int MaxKapital = 20000;
     [SerializeField] private TextMeshProUGUI KapitalText = null;
     [SerializeField] private static string TerrainTag = "Player";
     [SerializeField] static private int KostenProStadt = 10;
@@ -27,6 +27,7 @@ public class Game_manager : MonoBehaviour
         Spawnpoint.position = Hit.point;
         Instantiate(Playerprefab).transform.position = Spawnpoint.transform.position;
         Spawnscript = GetComponent<Spawn>();
+
         Cityprefab = Cityprefab1;
         Cities.Add(Instantiate(Cityprefab).GetComponent<Stadt>());
         Cities[0].transform.position = Spawnpoint.transform.position;
@@ -34,8 +35,19 @@ public class Game_manager : MonoBehaviour
         StartCoroutine(IncreaseMoney());
     }
 
+    public static void Reset()
+    {
+        Cities.Clear();
+        Spawnscript = null;
+        Cityprefab = null;
+        Kapital = 1;
+        MaxKapital = 20000;
+        KostenProStadt = 10;
+    }
+
     public static void Endgame(bool Win)
     {
+        Reset();
         if (Win) PlayerPrefs.SetInt("WinningState", 1);
         else PlayerPrefs.SetInt("WinningState", 0);
         SceneManager.LoadScene("MainMenu");
@@ -57,12 +69,12 @@ public class Game_manager : MonoBehaviour
             if (hit.collider.tag == TerrainTag) CanBuild = true;
             if (hit.collider.tag == Cityprefab.tag) CanBuild = false;
         }
-        if (CanBuild && Kapital >= KostenProStadt)
+        if (CanBuild && Kapital >= KostenProStadt*Cities.Count)
         {
             Stadt city =Instantiate(Cityprefab).GetComponent<Stadt>();
             Cities.Add(city);
             Spawnscript.AddCity(city.gameObject);
-            IncreaseKapital(-KostenProStadt);
+            IncreaseKapital(-KostenProStadt  +Cities.Count);
         }
         return CanBuild;
     }
@@ -122,7 +134,8 @@ public class Game_manager : MonoBehaviour
     {
         while (true)
         {
-            IncreaseKapital(Cities.Count * (Kapital / 10));
+            if (Kapital > 10) IncreaseKapital(Cities.Count * (Kapital / 10));
+            else IncreaseKapital(1);
             SetKapitalText();
             yield return new WaitForSeconds(1);
         }

@@ -33,7 +33,7 @@ public class Stadt : MonoBehaviour
     {
         Health H = transform.GetComponent<Health>();
         if (H.CurrentHealth < H.MaxHealth) { H.DoDamage(-10 * Amount); return true; }
-        if (Level < 2 && Game_manager.DecreaseKapital(20)) { SetLevel(Level + 1); return true; }
+        if (Level < 2 && Game_manager.DecreaseKapital(Game_manager.Kapital / 20 + 20)) { SetLevel(Level + 1); return true; }
         return false;
     }
 
