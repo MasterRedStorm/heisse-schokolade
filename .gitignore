@@ -34,3 +34,11 @@ sysinfo.txt
 # Builds
 *.apk
 *.unitypackage
+
+
+# Rider IDE
+.idea
+Unity/AtlanticWarfare/Assets/Plugins.meta
+Unity/AtlanticWarfare/Assets/Plugins/Editor.meta
+Unity/AtlanticWarfare/Assets/Plugins/Editor/JetBrains.meta
+Unity/AtlanticWarfare/Assets/Plugins/Editor/JetBrains
