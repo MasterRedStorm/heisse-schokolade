@@ -1,12 +1,15 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Random = System.Random;
 
 public class Spawn : MonoBehaviour
 {
     // Start is called before the first frame update
     private void Start()
     {
+        _random = new System.Random();
+        
         foreach (var city in cities)
         {
             StartCoroutine(SpawnTimer(city));
@@ -60,11 +63,10 @@ public class Spawn : MonoBehaviour
             var position = basePosition;
         
             spawnTransform.rotation = rotation;
-            var random = new System.Random();
-            var nextDouble = (float) (random.NextDouble() - 0.5);
+            var nextDouble = (float) (_random.NextDouble() - 0.5);
             spawnTransform.RotateAround(basePosition, Vector3.up, nextDouble * 180);
 
-            var spawnRadius = (float) (spawnRadiusMin + random.NextDouble() * (spawnRadiusMax - spawnRadiusMin)) + i * 10f;
+            var spawnRadius = (float) (spawnRadiusMin + _random.NextDouble() * (spawnRadiusMax - spawnRadiusMin)) + i * 10f;
 
             position -= spawnTransform.forward * spawnRadius;
 
@@ -84,7 +86,7 @@ public class Spawn : MonoBehaviour
     {
         while (city.activeSelf)
         {
-            yield return new WaitForSeconds(spawnCooldown);
+            yield return new WaitForSeconds(spawnCooldown * (float)(0.9f + _random.NextDouble() / 5));
 
             if (city == null || city.activeSelf == false)
             {
@@ -110,4 +112,6 @@ public class Spawn : MonoBehaviour
     public Transform mapCenter;
 
     public float waterLevel = 12f;
+    
+    private Random _random;
 }
