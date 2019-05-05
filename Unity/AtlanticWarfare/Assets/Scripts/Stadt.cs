@@ -19,6 +19,7 @@ public class Stadt : MonoBehaviour
         {
             if (Shoot())
             {
+                GetComponent<AudioSource>().Play();
                 yield return new WaitForSeconds(1/FireRate);
                 ResetLasers();
             }
@@ -79,7 +80,11 @@ public class Stadt : MonoBehaviour
             Target = EnemiesInRange[R.Next(0, EnemiesInRange.Count - 1)];
             Lasers[ActiveTurrets.IndexOf(turret)].SetPositions(new Vector3[] { turret.GetChild(turret.childCount - 1).transform.position, Target.position });
             turret.rotation = Quaternion.LookRotation(Vector3.ProjectOnPlane(Target.position-turret.position, Vector3.up),Vector3.up);
-            if (Target.GetComponent<Health>().DoDamage(10)) EnemiesInRange.Remove(Target);
+            
+            if (Target.GetComponent<Health>().DoDamage(10))
+            {
+                EnemiesInRange.Remove(Target);
+            }
         }
         return true;
     }

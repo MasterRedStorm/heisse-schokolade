@@ -5,7 +5,7 @@ using Random = System.Random;
 
 public class Spawn : MonoBehaviour
 {
-    public int maxEnemies = 100;
+    public int maxEnemies = 1000;
 
     public float spawnCooldown = 2f;
 
