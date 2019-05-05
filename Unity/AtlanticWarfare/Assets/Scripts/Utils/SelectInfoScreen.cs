@@ -19,6 +19,7 @@ namespace Utils
 
             _winScreen.SetActive(true);
             PlayerPrefs.SetInt(WinningState, 0);
+           
         }
     }
 }
