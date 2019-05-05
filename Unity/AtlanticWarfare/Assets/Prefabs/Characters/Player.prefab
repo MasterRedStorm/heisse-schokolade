@@ -54,7 +54,7 @@ MonoBehaviour:
   PlayerObject: {fileID: 371730216198346658}
   Smoothness: 0.75
   TerrainTag: Player
-  MoveableTag: Walkable
+  MoveableTag: PlayerStructure
   Speed: 0.5
   MoveIsPossible: 0
 --- !u!195 &8704549709712924191
