@@ -27,7 +27,6 @@ namespace  UI
         private void Update()
         {
             _textColor.a = Mathf.PingPong(Time.time, 1) * _alphaBounds.y + _alphaBounds.x;
-            Debug.Log(_textColor.a);
             _text.color = _textColor;
         }
     }
