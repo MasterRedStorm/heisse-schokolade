@@ -10,6 +10,7 @@ public class Stadt : MonoBehaviour
     [SerializeField] private Transform[] Turrets = new Transform[5];
     private List<Transform> ActiveTurrets = new List<Transform>();
     [SerializeField] private Transform[] Arms = new Transform[2];
+    [SerializeField] private string EnemyTag = "Enemy";
 
 
     public void Start()
@@ -58,11 +59,11 @@ public class Stadt : MonoBehaviour
 
     public void OnTriggerEnter(Collider other)
     {
-        if (other.transform.tag == "Player") EnemiesInRange.Add(other.transform);
+        if (other.transform.tag == EnemyTag) EnemiesInRange.Add(other.transform);
     }
 
     public void OnTriggerExit(Collider other)
     {
-        if (other.transform.tag == "Player") EnemiesInRange.Remove(other.transform);
+        if (other.transform.tag == EnemyTag) EnemiesInRange.Remove(other.transform);
     }
 }
