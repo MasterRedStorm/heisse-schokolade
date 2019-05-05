@@ -5,9 +5,11 @@ public class Enemy_Attack : MonoBehaviour
 {
     private void OnCollisionEnter(Collision collision)
     {
+        Debug.Log("Collided");
         var city = collision.gameObject;
         if (!city.CompareTag(targetTag))
         {
+        Debug.Log("Collided with city");
             return;
         }
 

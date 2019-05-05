@@ -11,20 +11,36 @@ public class Stadt : MonoBehaviour
     private List<Transform> ActiveTurrets = new List<Transform>();
     [SerializeField] private Transform[] Arms = new Transform[2];
     [SerializeField] private string EnemyTag = "Enemy";
+    [SerializeField, Range(0,10)] private float FireRate = 0.5f;
 
+    IEnumerator Shootloop()
+    {
+        while (true)
+        {
+            if (Shoot())
+            {
+                yield return new WaitForSeconds(1/FireRate);
+                ResetLasers();
+            }
+            else
+            {
+                yield return null;
+            }
+        }
+    }
 
     public void Start()
     {
         Lasers = GetComponentsInChildren<LineRenderer>();
         ActiveTurrets.Add(Turrets[0]);
         foreach (Transform Arm in Arms) Arm.gameObject.SetActive(false);
+        StartCoroutine(Shootloop());
     }
 
     public void Update()
     {
         if (Input.GetKeyDown(KeyCode.UpArrow)) SetLevel(Level + 1);
         if (Input.GetKeyDown(KeyCode.DownArrow)) SetLevel(Level - 1);
-        Shoot();
     }
 
     public void SetLevel(int value)
@@ -43,9 +59,9 @@ public class Stadt : MonoBehaviour
 
     private void ResetLasers(){ foreach (LineRenderer Laser in Lasers) Laser.SetPositions(new Vector3[] { Vector3.zero, Vector3.zero }); }
 
-    public void Shoot()
+    public bool Shoot()
     {
-        if (EnemiesInRange.Count == 0) return;
+        if (EnemiesInRange.Count == 0) return false;
         System.Random R = new System.Random();
         Transform Target = null;
         foreach (Transform turret in ActiveTurrets)
@@ -55,6 +71,7 @@ public class Stadt : MonoBehaviour
             turret.rotation = Quaternion.LookRotation(Vector3.ProjectOnPlane(Target.position-turret.position, Vector3.up),Vector3.up);
             if (Target.GetComponent<Health>().DoDamage(10)) EnemiesInRange.Remove(Target);
         }
+        return true;
     }
 
     public void OnTriggerEnter(Collider other)

@@ -53,7 +53,8 @@ public class Player_Movement : MonoBehaviour
 
     public void OnTriggerStay(Collider other)
     {
-        if (other.tag == MoveableTag) MoveIsPossible = true;
+        if (other.tag == MoveableTag)
+            MoveIsPossible = true;
     }
     public void OnTriggerExit(Collider other){ if (other.tag == MoveableTag) MoveIsPossible = false; }
 
