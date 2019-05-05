@@ -2,48 +2,128 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+using TMPro;
 
 public class Game_manager : MonoBehaviour
 {
-    public static Game_manager instance = null;
-
-    private bool GameIsRunning = false;
-
-    private Player Player;
-    private City[] Citys = new City[] { };
-    private Enemie[] Enemies = new Enemie[] { };
-    private static float Kapital = 0;
-    [SerializeField] private TextMesh KapitalText = null;
+    [SerializeField] Transform Spawnpoint = null;
+    [SerializeField] static Spawn Spawnscript = null;
+    [SerializeField] static GameObject Cityprefab = null;
+    [SerializeField] GameObject Cityprefab1 = null;
+    [SerializeField] GameObject Playerprefab = null;
+    private static List<Stadt> Cities = new List<Stadt>();
+    private static int Kapital = 10;
+    private static int MaxKapital = 20;
+    [SerializeField] private TextMeshProUGUI KapitalText = null;
+    [SerializeField] private static string TerrainTag = "Player";
+    [SerializeField] static private int KostenProStadt = 10;
 
     void Start()
     {
+        if (Spawnpoint == null || Cityprefab1==null || Playerprefab == null) { Debug.Log("Error starting Game manager", this); return; }
+        RaycastHit Hit;
+        Physics.Raycast(Spawnpoint.position, Vector3.down, out Hit);
+        Spawnpoint.position = Hit.point;
+        Instantiate(Playerprefab).transform.position = Spawnpoint.transform.position;
+        Spawnscript = GetComponent<Spawn>();
+        Cityprefab = Cityprefab1;
+        Cities.Add(Instantiate(Cityprefab).GetComponent<Stadt>());
+        Cities[0].transform.position = Spawnpoint.transform.position;
+        Spawnscript.AddCity(Cities[0].gameObject);
         StartCoroutine(IncreaseMoney());
+    }
+
+    public static void Endgame(bool Win)
+    {
+        if (Win) PlayerPrefs.SetInt("WinningState", 1);
+        else PlayerPrefs.SetInt("WinningState", 0);
+        SceneManager.LoadScene("MainMenu");
+        Debug.Log("GameOver");
+    }
+
+    public static void KillCity(Stadt city)
+    {
+        Cities.Remove(city);
+        if (Cities.Count == 0) Endgame(false);
+    }
+
+    public static bool BuildCity(Vector3 Pos)
+    {
+        RaycastHit[] Hits = Physics.RaycastAll(Pos + Vector3.up * 100, Vector3.down);
+        bool CanBuild = false;
+        foreach (RaycastHit hit in Hits)
+        {
+            if (hit.collider.tag == TerrainTag) CanBuild = true;
+            if (hit.collider.tag == Cityprefab.tag) CanBuild = false;
+        }
+        if (CanBuild && Kapital >= KostenProStadt)
+        {
+            Stadt city =Instantiate(Cityprefab).GetComponent<Stadt>();
+            Cities.Add(city);
+            Spawnscript.AddCity(city.gameObject);
+            IncreaseKapital(-KostenProStadt);
+        }
+        return CanBuild;
+    }
+
+    private static Stadt GetStadt(Vector3 Pos)
+    {
+        float Distance = float.MaxValue;
+        Stadt Closest = Cities[0];
+        foreach (Stadt City in Cities) if (Vector3.Distance(Pos, City.transform.position) < Distance)
+            {
+                Closest = City;
+                Distance = Vector3.Distance(Pos, City.transform.position);
+            }
+        return Closest;
+    }
+
+    public static void InvestInCity(Vector3 Pos)
+    {
+        if (Kapital <= 0) return;
+        if (GetStadt(Pos).Invest(1)) IncreaseKapital(-1);
+    }
+
+    public static void StealFromCity(Vector3 Pos)
+    {
+        if (GetStadt(Pos).Steal()) IncreaseKapital(1);
+        else if (Cities[0].Steal()) IncreaseKapital(1);
     }
 
     public void Update()
     {
-        KapitalText.text = "Investkapital: " + Kapital + "/1000";
+        KapitalText.text = "Investkapital: " + Kapital + "/" + MaxKapital;
     }
 
-    private void IncreaseKapital()
+    private static void IncreaseKapital(int Amount)
     {
-        Kapital += Citys.Length * (Kapital / 10);
+        Kapital += Amount;
         if (Kapital <= 0)
         {
             Kapital = 0;
         }
+        Debug.Log(Kapital);
+        if (Kapital >= MaxKapital) Endgame(true);
     }
 
-    private void DecreaseKapital(float amount)
+    public static bool DecreaseKapital(int Amount)
     {
-        Kapital -= amount;
+        if (Kapital >= Amount)
+        {
+            Kapital -= Amount;
+            return true;
+        } else
+        {
+            return false;
+        }
     }
 
     IEnumerator IncreaseMoney()
     {
         while (true)
         {
-            Kapital += Citys.Length * (Kapital / 10);
+            IncreaseKapital(Cities.Count * (Kapital / 10));
             SetKapitalText();
             yield return new WaitForSeconds(1);
         }
@@ -53,4 +133,5 @@ public class Game_manager : MonoBehaviour
     {
         KapitalText.text = "Investkapital: " + Kapital;
     }
+       
 }
