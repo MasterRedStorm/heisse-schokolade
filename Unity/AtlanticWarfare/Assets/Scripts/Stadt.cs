@@ -32,16 +32,35 @@ public class Stadt : MonoBehaviour
     public bool Invest(int Amount)
     {
         Health H = transform.GetComponent<Health>();
-        if (H.CurrentHealth < H.MaxHealth) { H.DoDamage(-10 * Amount); return true; }
-        if (Level < 2 && Game_manager.DecreaseKapital(Game_manager.Kapital / 20 + 20)) { SetLevel(Level + 1); return true; }
+        if (H.CurrentHealth < H.MaxHealth)
+        {
+            H.DoDamage(-10 * Amount); 
+            Game_manager.ChatMessage("Healing Tower...");
+            return true;
+        }
+        if (Level < 2 && Game_manager.DecreaseKapital(Game_manager.Kapital / 20 + 20))
+        {
+            Game_manager.ChatMessage("Upgrading Tower...");
+            SetLevel(Level + 1);
+            return true;
+        } else Game_manager.ChatMessage("Tower maxed.");
         return false;
     }
 
     public bool Steal()
     {
         Health H = transform.GetComponent<Health>();
-        if (Level > 0) { SetLevel(Level - 1); return true; }
-        if (H.CurrentHealth > 10) { H.DoDamage(10); return true; }
+        if (Level > 0)
+        {
+            SetLevel(Level - 1); return true;
+            Game_manager.ChatMessage("Downgrading Tower...");
+        }
+        if (H.CurrentHealth > 10)
+        {
+            Game_manager.ChatMessage("Robbing Tower...");
+            H.DoDamage(10); return true;
+        }
+        Game_manager.ChatMessage("Don't kill Towers! plz?");
         return false;
     }
 
@@ -79,7 +98,12 @@ public class Stadt : MonoBehaviour
             Target = EnemiesInRange[R.Next(0, EnemiesInRange.Count - 1)];
             Lasers[ActiveTurrets.IndexOf(turret)].SetPositions(new Vector3[] { turret.GetChild(turret.childCount - 1).transform.position, Target.position });
             turret.rotation = Quaternion.LookRotation(Vector3.ProjectOnPlane(Target.position-turret.position, Vector3.up),Vector3.up);
-            if (Target.GetComponent<Health>().DoDamage(10)) EnemiesInRange.Remove(Target);
+
+            if (Target.GetComponent<Health>().DoDamage(10))
+            {
+                EnemiesInRange.Remove(Target);
+                Game_manager.ChatMessage("Enemy down!");
+            }
         }
         return true;
     }

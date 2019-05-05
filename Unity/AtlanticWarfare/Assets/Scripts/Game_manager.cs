@@ -8,19 +8,22 @@ using TMPro;
 public class Game_manager : MonoBehaviour
 {
     [SerializeField] Transform Spawnpoint = null;
-    [SerializeField] static Spawn Spawnscript = null;
-    [SerializeField] static GameObject Cityprefab = null;
+    static Spawn Spawnscript = null;
+    static GameObject Cityprefab = null;
     [SerializeField] GameObject Cityprefab1 = null;
     [SerializeField] GameObject Playerprefab = null;
     private static List<Stadt> Cities = new List<Stadt>();
     public static int Kapital = 1;
     private static int MaxKapital = 20000;
     [SerializeField] private TextMeshProUGUI KapitalText = null;
-    [SerializeField] private static string TerrainTag = "Player";
+    private static string TerrainTag = "Player";
     [SerializeField] static private int KostenProStadt = 10;
+    [SerializeField] private TextMeshProUGUI GlobalMessage1;
+    private static TextMeshProUGUI GlobalMessage;
 
     void Start()
     {
+        GlobalMessage = GlobalMessage1;
         if (Spawnpoint == null || Cityprefab1==null || Playerprefab == null) { Debug.Log("Error starting Game manager", this); return; }
         RaycastHit Hit;
         Physics.Raycast(Spawnpoint.position, Vector3.down, out Hit);
@@ -43,6 +46,8 @@ public class Game_manager : MonoBehaviour
         Kapital = 1;
         MaxKapital = 20000;
         KostenProStadt = 10;
+        GlobalMessage.text = "";
+        GlobalMessage = null;
     }
 
     public static void Endgame(bool Win)
@@ -69,14 +74,32 @@ public class Game_manager : MonoBehaviour
             if (hit.collider.tag == TerrainTag) CanBuild = true;
             if (hit.collider.tag == Cityprefab.tag) CanBuild = false;
         }
-        if (CanBuild && Kapital >= KostenProStadt*Cities.Count)
+        if (CanBuild && Kapital >= KostenProStadt * Cities.Count)
         {
-            Stadt city =Instantiate(Cityprefab).GetComponent<Stadt>();
+            Stadt city = Instantiate(Cityprefab).GetComponent<Stadt>();
             Cities.Add(city);
             Spawnscript.AddCity(city.gameObject);
-            IncreaseKapital(-KostenProStadt  +Cities.Count);
+            IncreaseKapital(-KostenProStadt * Cities.Count);
+            ChatMessage("Tower built!");
         }
+        else
+        {
+            if (CanBuild) ChatMessage("Dude, you're boke!");
+            else ChatMessage("Can't build here.");
+        }
+
         return CanBuild;
+    }
+
+    public static void ChatMessage(string message)
+    {
+        GlobalMessage.text = message;
+
+    }
+
+    IEnumerator ClearText()
+    {
+        yield return new WaitForSeconds(3);
     }
 
     private static Stadt GetStadt(Vector3 Pos)
