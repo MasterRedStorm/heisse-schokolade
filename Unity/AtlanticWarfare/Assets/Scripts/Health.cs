@@ -7,13 +7,14 @@ public class Health : MonoBehaviour
 {
     [SerializeField] private Slider HealthSlider = null;
     [SerializeField] private int MaxHealth = 100;
-    private int CurrentHealth;
+    private int CurrentHealth = 0;
 
     public void Start()
     {
         if (HealthSlider == null) { Debug.Log("No Health Slider!", this); return; }
         HealthSlider.minValue = 0;
         HealthSlider.maxValue = MaxHealth;
+        CurrentHealth = MaxHealth;
     }
 
     public void Update()
@@ -22,7 +23,7 @@ public class Health : MonoBehaviour
         HealthSlider.value = CurrentHealth;
     }
 
-    public void DoDamage(int Damage)
+    public bool DoDamage(int Damage)
     {
         CurrentHealth -= Damage;
         if (CurrentHealth <= 0)
@@ -30,6 +31,8 @@ public class Health : MonoBehaviour
             CurrentHealth = 0;
             Kill();
         }
+        else if (CurrentHealth > MaxHealth) CurrentHealth = MaxHealth;
+        return (CurrentHealth == 0);
     }
 
     public void Kill()
