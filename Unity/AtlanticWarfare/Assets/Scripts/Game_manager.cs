@@ -103,7 +103,6 @@ public class Game_manager : MonoBehaviour
         {
             Kapital = 0;
         }
-        Debug.Log(Kapital);
         if (Kapital >= MaxKapital) Endgame(true);
     }
 
