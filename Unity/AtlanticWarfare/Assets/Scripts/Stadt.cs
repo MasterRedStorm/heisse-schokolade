@@ -29,18 +29,28 @@ public class Stadt : MonoBehaviour
         }
     }
 
+    public bool Invest(int Amount)
+    {
+        Health H = transform.GetComponent<Health>();
+        if (H.CurrentHealth < H.MaxHealth) { H.DoDamage(-10 * Amount); return true; }
+        if (Level < 2 && Game_manager.DecreaseKapital(Game_manager.Kapital / 20 + 20)) { SetLevel(Level + 1); return true; }
+        return false;
+    }
+
+    public bool Steal()
+    {
+        Health H = transform.GetComponent<Health>();
+        if (Level > 0) { SetLevel(Level - 1); return true; }
+        if (H.CurrentHealth > 10) { H.DoDamage(10); return true; }
+        return false;
+    }
+
     public void Start()
     {
         Lasers = GetComponentsInChildren<LineRenderer>();
         ActiveTurrets.Add(Turrets[0]);
         foreach (Transform Arm in Arms) Arm.gameObject.SetActive(false);
         StartCoroutine(Shootloop());
-    }
-
-    public void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.UpArrow)) SetLevel(Level + 1);
-        if (Input.GetKeyDown(KeyCode.DownArrow)) SetLevel(Level - 1);
     }
 
     public void SetLevel(int value)

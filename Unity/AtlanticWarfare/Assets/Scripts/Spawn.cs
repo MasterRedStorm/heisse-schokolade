@@ -5,6 +5,23 @@ using Random = System.Random;
 
 public class Spawn : MonoBehaviour
 {
+    public int maxEnemies = 100;
+
+    public float spawnCooldown = 2f;
+
+    public float spawnRadiusMin = 50f;
+
+    public float spawnRadiusMax = 70f;
+
+    public GameObject enemyPrefab;
+
+    public List<GameObject> cities;
+
+    public Transform mapCenter;
+
+    public float waterLevel = 12f;
+
+    private Random _random;
     // Start is called before the first frame update
     private void Start()
     {
@@ -97,21 +114,5 @@ public class Spawn : MonoBehaviour
         }
     }
 
-    public int maxEnemies = 100;
-
-    public float spawnCooldown = 2f;
-
-    public float spawnRadiusMin = 50f;
-
-    public float spawnRadiusMax = 70f;
-
-    public GameObject enemyPrefab;
-
-    public List<GameObject> cities;
-
-    public Transform mapCenter;
-
-    public float waterLevel = 12f;
-    
-    private Random _random;
+   
 }

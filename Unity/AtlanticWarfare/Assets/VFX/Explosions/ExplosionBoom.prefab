@@ -28170,8 +28170,9 @@ GameObject:
   m_Component:
   - component: {fileID: 3314982341479497533}
   - component: {fileID: 3314982341479497534}
+  - component: {fileID: 7241970804218777138}
   m_Layer: 0
-  m_Name: Explosion
+  m_Name: ExplosionBoom
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -28258,6 +28259,18 @@ Light:
   m_UseBoundingSphereOverride: 0
   m_ShadowRadius: 0
   m_ShadowAngle: 0
+--- !u!114 &7241970804218777138
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3314982341479497535}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 18e94ff433d899b418106a3863b8a445, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &3314982341508251547
 GameObject:
   m_ObjectHideFlags: 0

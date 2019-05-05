@@ -29,7 +29,7 @@ public class Enemy_Attack : MonoBehaviour
                 yield break;
             }
 
-            city.GetComponent<Health>()?.DoDamage(power);
+            if (city.GetComponent<Health>().DoDamage(power)) Game_manager.KillCity(city.GetComponent<Stadt>());
         }
     }
 

@@ -6,9 +6,11 @@ using UnityEngine.UI;
 public class Health : MonoBehaviour
 {
     [SerializeField] private Slider HealthSlider = null;
-    [SerializeField] private int MaxHealth = 100;
-    [SerializeField] private int CurrentHealth = 0;
+    [SerializeField] public int MaxHealth = 100;
+    [SerializeField] public int CurrentHealth = 0;
 
+    private GameObject ExplosionPrefab; 
+    
     public void Start()
     {
         CurrentHealth = MaxHealth;
@@ -39,6 +41,14 @@ public class Health : MonoBehaviour
 
     public void Kill()
     {
+        ExplosionPrefab = (GameObject)Resources.Load("VFX/Explosions/ExplosionBoom", typeof(GameObject));
+
+        Instantiate(
+            ExplosionPrefab,
+            transform.position,
+            Quaternion.identity
+        );
+        
         gameObject.SetActive(false);
     }
 }
