@@ -106,6 +106,7 @@ public class Game_manager : MonoBehaviour
     public void Update()
     {
         KapitalText.text = "Investkapital: " + Kapital + "/" + MaxKapital;
+        if (1 - Kapital / (Kapital + 1) != 0) Spawnscript.spawnCooldown *= 1 - Kapital / (Kapital + 1);
     }
 
     private static void IncreaseKapital(int Amount)
