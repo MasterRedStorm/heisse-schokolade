@@ -21,7 +21,12 @@ public class Game_manager : MonoBehaviour
 
     void Start()
     {
-        if (Spawnpoint == null || Cityprefab1==null || Playerprefab == null) { Debug.Log("Error starting Game manager", this); return; }
+        if (Spawnpoint == null || Cityprefab1 == null || Playerprefab == null)
+        {
+            Debug.Log("Error starting Game manager", this);
+            return;
+        }
+
         RaycastHit Hit;
         Physics.Raycast(Spawnpoint.position, Vector3.down, out Hit);
         Spawnpoint.position = Hit.point;
@@ -67,15 +72,21 @@ public class Game_manager : MonoBehaviour
         foreach (RaycastHit hit in Hits)
         {
             if (hit.collider.tag == TerrainTag) CanBuild = true;
-            if (hit.collider.tag == Cityprefab.tag) CanBuild = false;
+//            if (hit.collider.tag == Cityprefab.tag)
+//            {
+//                CanBuild = false;
+//                break;
+//            }
         }
-        if (CanBuild && Kapital >= KostenProStadt*Cities.Count)
+
+        if (CanBuild && Kapital >= KostenProStadt * Cities.Count)
         {
-            Stadt city =Instantiate(Cityprefab).GetComponent<Stadt>();
+            Stadt city = Instantiate(Cityprefab, Pos, Quaternion.identity).GetComponent<Stadt>();
             Cities.Add(city);
             Spawnscript.AddCity(city.gameObject);
-            IncreaseKapital(-KostenProStadt  +Cities.Count);
+            IncreaseKapital(-KostenProStadt + Cities.Count);
         }
+
         return CanBuild;
     }
 
@@ -83,11 +94,13 @@ public class Game_manager : MonoBehaviour
     {
         float Distance = float.MaxValue;
         Stadt Closest = Cities[0];
-        foreach (Stadt City in Cities) if (Vector3.Distance(Pos, City.transform.position) < Distance)
+        foreach (Stadt City in Cities)
+            if (Vector3.Distance(Pos, City.transform.position) < Distance)
             {
                 Closest = City;
                 Distance = Vector3.Distance(Pos, City.transform.position);
             }
+
         return Closest;
     }
 
@@ -116,6 +129,7 @@ public class Game_manager : MonoBehaviour
         {
             Kapital = 0;
         }
+
         if (Kapital >= MaxKapital) Endgame(true);
     }
 
@@ -125,7 +139,8 @@ public class Game_manager : MonoBehaviour
         {
             Kapital -= Amount;
             return true;
-        } else
+        }
+        else
         {
             return false;
         }
@@ -146,5 +161,4 @@ public class Game_manager : MonoBehaviour
     {
         KapitalText.text = "Investkapital: " + Kapital;
     }
-       
 }

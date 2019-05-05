@@ -31,7 +31,7 @@ public class Player_Movement : MonoBehaviour
         for (int i = 0; i < WASD_Controls.Length; i++) if (Input.GetKey(WASD_Controls[i])) WantedDir += new Vector3( (i-2)%2 , 0 , -(i-1)%2 );
         if (WantedDir == Vector3.zero) MovingDir *= 1-Speed;
         else MovingDir = Vector3.Lerp(MovingDir, WantedDir.normalized, (1 - Smoothness)).normalized;
-        if (Input.GetKey(BuildCityKey)) Game_manager.BuildCity(transform.position + transform.forward * 3);
+        if (Input.GetKey(BuildCityKey)) Game_manager.BuildCity(transform.position + transform.forward * 10);
         if (Input.GetKey(InvestKey)) Game_manager.InvestInCity(transform.position);
         if (Input.GetKey(StealKey)) Game_manager.StealFromCity(transform.position);
 
