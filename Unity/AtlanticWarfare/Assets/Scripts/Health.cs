@@ -11,6 +11,8 @@ public class Health : MonoBehaviour
 
     public void Start()
     {
+        CurrentHealth = MaxHealth;
+        
         if (HealthSlider == null) { Debug.Log("No Health Slider!", this); return; }
         HealthSlider.minValue = 0;
         HealthSlider.maxValue = MaxHealth;
