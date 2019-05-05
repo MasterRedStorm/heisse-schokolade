@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using UnityEngine;
 
-public class Attack : MonoBehaviour
+public class Enemy_Attack : MonoBehaviour
 {
     private void OnCollisionEnter(Collision collision)
     {

@@ -41,6 +41,7 @@ public class Player_Movement : MonoBehaviour
             NavMeshHit NavHit = new NavMeshHit();
             if (Hit.collider.tag == TerrainTag && NavMesh.SamplePosition(Hit.point, out NavHit, 1, NavMesh.AllAreas))
             {
+                Debug.Log("Move?:"+MoveIsPossible, this);
                 if (MoveIsPossible) PlayerAgent.nextPosition = NavHit.position;
                 Debug.DrawRay(NavHit.position, Vector3.up , Color.red, 30);
                 break;
@@ -53,7 +54,6 @@ public class Player_Movement : MonoBehaviour
     public void OnTriggerStay(Collider other)
     {
         if (other.tag == MoveableTag) MoveIsPossible = true;
-        Debug.Log("Trigger Stay");
     }
     public void OnTriggerExit(Collider other){ if (other.tag == MoveableTag) MoveIsPossible = false; }
 
