@@ -19,6 +19,7 @@ public class Stadt : MonoBehaviour
         {
             if (Shoot())
             {
+                GetComponent<AudioSource>().Play();
                 yield return new WaitForSeconds(1/FireRate);
                 ResetLasers();
             }

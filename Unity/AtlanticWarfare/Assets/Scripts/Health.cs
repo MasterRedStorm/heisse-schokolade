@@ -8,8 +8,7 @@ public class Health : MonoBehaviour
     [SerializeField] private Slider HealthSlider = null;
     [SerializeField] public int MaxHealth = 100;
     [SerializeField] public int CurrentHealth = 0;
-
-    private GameObject ExplosionPrefab; 
+    [SerializeField] private GameObject ExplosionPrefab; 
     
     public void Start()
     {
@@ -23,7 +22,9 @@ public class Health : MonoBehaviour
 
     public void Update()
     {
-        if (HealthSlider == null) return;
+        if (HealthSlider == null)
+            return;
+        
         HealthSlider.value = CurrentHealth;
     }
 
@@ -41,14 +42,15 @@ public class Health : MonoBehaviour
 
     public void Kill()
     {
-        ExplosionPrefab = (GameObject)Resources.Load("VFX/Explosions/ExplosionBoom", typeof(GameObject));
-
         Instantiate(
             ExplosionPrefab,
             transform.position,
             Quaternion.identity
         );
-        
+
+        var audioSource = GetComponent<AudioSource>();
+        audioSource?.Play();
+
         gameObject.SetActive(false);
     }
 }
