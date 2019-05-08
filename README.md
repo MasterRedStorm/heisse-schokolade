@@ -1,0 +1,46 @@
+# Atlantic Warfare
+
+## Summary
+In the 5th gamejam of 3m5, 4 groups of 3-5 people came together to develop games around the topics shown below.
+In an early meeting on Saturday, all participants had to vote democratically for 1 of 3 groups, containing 15 random words each.
+There was no regulation, how many of these topics must be included in the final product.
+
+Our team was developing a tower-defense game, with one special feature.
+We intended to increase/lower the water level depending on the amount of towers.
+Unfortunately this feature was given up later in the process to improve the player's overview.
+
+Topics:
+- Mogulreich
+- Magistratsbeamte
+- Entheiligen
+- Sklave
+- Wildnisgebiet (*)
+- Investivkapital (*)
+- Riskieren (*)
+- Teilhalogeniert
+- Sublitoral (*)
+- Relaxationsprozess
+- Reproduktionstechnik (*)
+- Akkumulationspuffer
+- Basilaristyp
+- Rodelgeschichte
+- Atlantik (*)
+
+Topics marked with (*) were included in our game.
+
+## Details
+Date: 4th and 5th May 2019
+Location: 3m5 (Dresden, Germany)
+Team Name: heisse-schokolade
+
+# Goals
+- The players goal is to stay alive until he/she has reached a specific budget.
+- By 'investing' money, the player can create and upgrade towers.
+- By 'collecting' money from towers, the player can weaken them.
+- The risk of loosing a tower grows, but on the other hand, the player generates more income over time, depending on its current budget.
+
+# Rules
+- Enemies will only attack towers.
+- The player can only move within the force fields of nearby towers.
+- Towers can be upgraded twice.
+
