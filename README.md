@@ -9,29 +9,22 @@ Our team was developing a tower-defense game, with one special feature.
 We intended to increase/lower the water level depending on the amount of towers.
 Unfortunately this feature was given up later in the process to improve the player's overview.
 
-Topics:
-- Mogulreich
-- Magistratsbeamte
-- Entheiligen
-- Sklave
-- Wildnisgebiet (*)
-- Investivkapital (*)
-- Riskieren (*)
-- Teilhalogeniert
-- Sublitoral (*)
-- Relaxationsprozess
-- Reproduktionstechnik (*)
-- Akkumulationspuffer
-- Basilaristyp
-- Rodelgeschichte
-- Atlantik (*)
+### Topics
+
+|                   |                     |                          |
+|-------------------|---------------------|--------------------------|
+| Mogulreich        | Investivkapital (*) | Reproduktionstechnik (*) |
+| Magistratsbeamte  | Riskieren (*)       | Akkumulationspuffer      |
+| Entheiligen       | Teilhalogeniert     | Basilaristyp             |
+| Sklave            | Sublitoral (*)      | Rodelgeschichte          |
+| Wildnisgebiet (*) | Relaxationsprozess  | Atlantik (*)             |
 
 Topics marked with (*) were included in our game.
 
 ## Details
-Date: 4th and 5th May 2019
-Location: 3m5 (Dresden, Germany)
-Team Name: heisse-schokolade
+- Date: 4th and 5th May 2019
+- Location: 3m5 (Dresden, Germany)
+- Team Name: heisse-schokolade
 
 # Goals
 - The players goal is to stay alive until he/she has reached a specific budget.
