@@ -1,5 +1,7 @@
 # Atlantic Warfare
 
+![alt-text-1](./Screenshots/Raw/AssetOverview.PNG "Cover Image")
+
 ## Summary
 In the 5th gamejam of 3m5, 4 groups of 3-5 people came together to develop games around the topics shown below.
 In an early meeting on Saturday, all participants had to vote democratically for 1 of 3 groups, containing 15 random words each.
@@ -42,4 +44,12 @@ Topics marked with (*) were included in our game.
 - Arrow left to collect money from the nearest tower --> lowering its health
 - Arrow right to invest money in the nearest tower --> restoring health + upgrading
 
-## Images
+## Image Gallery
+
+Splashscreen               |  Controls Menu            | Winning Screen            |  Loosing Screen
+:-------------------------:|:-------------------------:|:-------------------------:|:-------------------------:
+![](./Screenshots/Raw/splashscreen.PNG "Splashscreen")  |  ![](./Screenshots/Raw/controls.PNG "Controls menu") | ![](./Screenshots/Raw/winningScreen.PNG "Winning screen")  |  ![](./Screenshots/Raw/loosingScreen.PNG "Loosing screen")
+
+Player generates income    | Player increases area     | Player stucked out of area|  Tower level 3
+:-------------------------:|:-------------------------:|:-------------------------:|:-------------------------:
+![](./Screenshots/Raw/level2.PNG "Player generating income")  |  ![](./Screenshots/Raw/level4.PNG "Player expanding into new area") | ![](./Screenshots/Raw/level3.PNG "Player out of force field")  |  ![](./Screenshots/Raw/upgrade2.PNG "Upgraded tower")
