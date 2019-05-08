@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: c34052b992312454d8a97bd2262043c4
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - HealthSlider: {instanceID: 0}
+  - ExplosionPrefab: {fileID: 3314982341479497535, guid: 5c5e049b1881007498c2234beacc75e2,
+      type: 3}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
