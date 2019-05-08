@@ -26,14 +26,20 @@ Topics marked with (*) were included in our game.
 - Location: 3m5 (Dresden, Germany)
 - Team Name: heisse-schokolade
 
-# Goals
+## Goals
 - The players goal is to stay alive until he/she has reached a specific budget.
 - By 'investing' money, the player can create and upgrade towers.
 - By 'collecting' money from towers, the player can weaken them.
 - The risk of loosing a tower grows, but on the other hand, the player generates more income over time, depending on its current budget.
 
-# Rules
+## Rules
 - Enemies will only attack towers.
 - The player can only move within the force fields of nearby towers.
 - Towers can be upgraded twice.
 
+## Controls
+- WASD to move the player
+- Arrow left to collect money from the nearest tower --> lowering its health
+- Arrow right to invest money in the nearest tower --> restoring health + upgrading
+
+## Images
